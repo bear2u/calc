@@ -20,6 +20,7 @@ function loadDB(){
     beginActivity(); 
 }//loadDB
 
+
 function beginActivity(){
  cardState=0;
  var color1=colorArray[Math.floor(Math.random()*colorArray.length)];
