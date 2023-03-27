@@ -59,6 +59,7 @@ function beginActivity(){
  });//click function
 }//beginactivity
 
+
 function togglePosition(){
  if($("#card1").position().top==-200){$("#card1").css("top","200px");};
 }//toggle
