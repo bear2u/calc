@@ -59,3 +59,22 @@ font-size:30px;
 margin-top:30px;
 font-family:Montserrat,Arial;
 }
+
+.answer{
+    width:200px;
+    height:50px;
+    margin:auto;    
+    margin-top: 20px;    
+}
+
+.answer input{
+    width:200px;
+    height:50px;
+    text-align: center;
+    font-size: 30px;
+    font-family:Montserrat,Arial;
+    letter-spacing: 5px;
+    background-color:#06994f;
+    border: 2px solid #1E824C;
+    
+}
