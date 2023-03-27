@@ -96,10 +96,19 @@
             answerArray[i].value = ""; // 초기화
             document.getElementById("score").innerHTML = 0; // 초기화
         }
+    }    
+    function change() {
+      // event.preventDefault()
+      $('#tb').children().remove();
+      run();
+      makeExp(); 
     }
-    $(document).ready(function(){
-      var count = $("#count").val()
+    function run() {
+      // event.preventDefault();
+      var count = $("#count").val();
+      // alert(count);
       for(var i=0;i<count;i++) {
+        // $('#tb').remove();
         $("#tb").append(
         `<tr>
             <td>${i+1}.</td>
@@ -109,6 +118,12 @@
         </tr>`
         )
       }
+    }
+    function cardview() {
+      location.href="cardview/index.html";
+    }
+    $(document).ready(function(){
+      run();
       makeExp();      
     });
 
@@ -123,6 +138,10 @@
     <table>
       <tr>
         <td><input type="text" value="50" id="count">개</td>
+        <td><button type="button" onclick="change()">변경</button></td>
+        <td><button type="button" onclick="cardview()">카드뷰</button></td>
+      </tr>
+      <tr>  
         <td><input type="button" onclick="clac()" value="채점"></td>
         <td><span id="score">0</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="button" onclick="makeExp()"> 다시 </button></td>
