@@ -86,6 +86,10 @@ let gOption = 0;
             let op = option;
             if(option == 100)
               op = Math.floor(Math.random()*2); // operator=연산자 사칙연산이어서 4개 랜덤
+            else if(option == 200) {
+              num1 = parseInt(Math.random() * (100 - 10) + 10)
+              op = 0;
+            }  
             let operator = "+"; // 변수 operator 초기화
             // console.log('op=', op)          
             switch(op)
@@ -157,21 +161,27 @@ let gOption = 0;
         <td><input type="text" value="50" id="count">개</td>
         <td><button type="button" onclick="change()">변경</button></td>
         <td><button type="button" onclick="cardview()">카드뷰</button></td>
+      </tr>      
+      <tr>    
+        <td>
+          <button type="button" onclick="makeExp(0)" style="background-color: green;"> 덧셈 </button>
+        </td>
+        <td>
+          <button type="button" onclick="makeExp(1)" style="background-color: red;"> 뺄셈 </button>
+        </td>
+        <td>
+          <button type="button" onclick="makeExp(100)" style="background-color: aqua;"> 덧셈+뺼셈 </button>
+        </td>  
+        <td>
+          <button type="button" onclick="makeExp(200)" style="background-color: yellow;"> 두자리 덧셈 </button>
+        </td>       
+      </tr>
+      <tr>
+        <td></td>
       </tr>
       <tr>  
         <td><input type="button" onclick="clac()" value="채점"></td>
         <td><span id="score">0</span></td>
-      </tr>
-      <tr>    
-        <td>
-          <button type="button" onclick="makeExp(0)"> 덧셈 </button>
-        </td>
-        <td>
-          <button type="button" onclick="makeExp(1)"> 뺄셈 </button>
-        </td>
-        <td>
-          <button type="button" onclick="makeExp(100)"> 덧셈+뺼셈 </button>
-        </td>        
       </tr>
     </table>
     <table id="tb">
