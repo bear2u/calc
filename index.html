@@ -33,7 +33,7 @@
 
 <script>
 
-let gameMode = 1;
+let gOption = 0;
 //1 => 덧셈모드
 //2 => 뺄셈모드
     function clac() // 유저의 입력값이 정답인지 봐주는 함수
@@ -110,13 +110,15 @@ let gameMode = 1;
             document.getElementById("score").innerHTML = 0; // 초기화
         }
 
-        gameMode = 1;
+
+        gOption = option;
+        // gameMode = 1;
     }    
     function change() {
       // event.preventDefault()
       $('#tb').children().remove();
       run();
-      makeExp(); 
+      makeExp(gOption); 
     }
     function run() {
       // event.preventDefault();
