@@ -33,6 +33,9 @@
 
 <script>
 
+let gameMode = 1;
+//1 => 덧셈모드
+//2 => 뺄셈모드
     function clac() // 유저의 입력값이 정답인지 봐주는 함수
     {
         let total=0; // 초기화
@@ -72,7 +75,7 @@
         document.getElementById("score").innerHTML=total;
     }
 
-    function makeExp() // 랜덤으로 문제가 나오게 하는 함수
+    function makeExp(option) // 랜덤으로 문제가 나오게 하는 함수
     {
         let questionArray=document.getElementsByClassName("question");
         let answerArray=document.getElementsByClassName("answer");
@@ -80,15 +83,25 @@
         {
             let num1 = Math.floor(Math.random()*9)+1;
             let num2 = Math.floor(Math.random()*9)+1;
-            let op = 0;//Math.floor(Math.random()*4); // operator=연산자 사칙연산이어서 4개 랜덤
+            let op = option;
+            if(option == 100)
+              op = Math.floor(Math.random()*2); // operator=연산자 사칙연산이어서 4개 랜덤
             let operator = "+"; // 변수 operator 초기화
-            
+            // console.log('op=', op)          
             switch(op)
             {
                 case 0: operator = "+"; break;
                 case 1: operator = "-"; break;
-                case 2: operator = "*"; break;
-                case 3: operator = "/"; break;
+                // case 2: operator = "*"; break;
+                // case 3: operator = "/"; break;
+            }
+
+            if(op == 1) {
+              if(num2 > num1) {
+                let tmp = num1;
+                num1 = num2;
+                num2 = tmp;
+              }
             }
 
             questionArray[i].innerHTML = num1 + operator + num2;
@@ -96,6 +109,8 @@
             answerArray[i].value = ""; // 초기화
             document.getElementById("score").innerHTML = 0; // 초기화
         }
+
+        gameMode = 1;
     }    
     function change() {
       // event.preventDefault()
@@ -143,8 +158,18 @@
       </tr>
       <tr>  
         <td><input type="button" onclick="clac()" value="채점"></td>
-        <td><span id="score">0</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="button" onclick="makeExp()"> 다시 </button></td>
+        <td><span id="score">0</span></td>
+      </tr>
+      <tr>    
+        <td>
+          <button type="button" onclick="makeExp(0)"> 덧셈 </button>
+        </td>
+        <td>
+          <button type="button" onclick="makeExp(1)"> 뺄셈 </button>
+        </td>
+        <td>
+          <button type="button" onclick="makeExp(100)"> 덧셈+뺼셈 </button>
+        </td>        
       </tr>
     </table>
     <table id="tb">
