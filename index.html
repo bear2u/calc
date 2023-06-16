@@ -99,7 +99,11 @@ let gOption = 0;
               op = Math.floor(Math.random()*2); // operator=연산자 사칙연산이어서 4개 랜덤
             } else if(option == 2) {
               //곱하기
-              if(targetNum > 1) num1 = targetNum;
+              var num = Math.floor(Math.random() * 2);
+              if(targetNum > 1) {
+                if(num == 0) num1 = targetNum;
+                else num2 = targetNum;
+              }
             }
             let operator = "+"; // 변수 operator 초기화
             // console.log('op=', op)          
