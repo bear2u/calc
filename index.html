@@ -75,7 +75,7 @@ let gOption = 0;
         document.getElementById("score").innerHTML=total;
     }
 
-    function makeExp(option) // 랜덤으로 문제가 나오게 하는 함수
+    function makeExp(option, targetNum) // 랜덤으로 문제가 나오게 하는 함수
     {
         let questionArray=document.getElementsByClassName("question");
         let answerArray=document.getElementsByClassName("answer");
@@ -96,6 +96,9 @@ let gOption = 0;
               num1 = parseInt(Math.random() * (100 - 10) + 10)
               num2 = parseInt(Math.random() * (100 - 10) + 10)
               op = Math.floor(Math.random()*2); // operator=연산자 사칙연산이어서 4개 랜덤
+            } else if(option == 2) {
+              //곱하기
+              if(targetNum > 1) num1 = targetNum;
             }
             let operator = "+"; // 변수 operator 초기화
             // console.log('op=', op)          
@@ -103,7 +106,7 @@ let gOption = 0;
             {
                 case 0: operator = "+"; break;
                 case 1: operator = "-"; break;
-                // case 2: operator = "*"; break;
+                case 2: operator = "*"; break;
                 // case 3: operator = "/"; break;
             }
 
@@ -155,6 +158,11 @@ let gOption = 0;
       makeExp();      
     });
 
+    function calMultiply() {
+      var opt = $("#mul_opt").find(":selected").val();
+      makeExp(2, parseInt(opt));      
+    }
+
 </script>
 </head>
 
@@ -189,6 +197,30 @@ let gOption = 0;
         </td>
         <td>
           <button type="button" onclick="makeExp(400)" style="background-color: greenyellow;"> 두자리 덧셈+뺏셈 </button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <table>
+            <tr>
+              <td>
+                <select id="mul_opt">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="0">섞어서</option>
+                </select>
+              </td>
+              <td>
+                <button type="button" id="calMulti" onclick="calMultiply()" style="background-color: red;"> 곱셈시작 </button>
+              </td>              
+            </tr>
+          </table>
         </td>
       </tr>
       <tr>
