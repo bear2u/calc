@@ -30,8 +30,11 @@
   src="https://code.jquery.com/jquery-3.6.4.min.js"
   integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
   crossorigin="anonymous"></script>
-
+  <script src="
+  https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js
+  "></script>
 <script>
+  
 
 let gOption = 0;
 //1 => 덧셈모드
@@ -97,7 +100,11 @@ let gOption = 0;
               num1 = parseInt(Math.random() * (100 - 10) + 10)
               num2 = parseInt(Math.random() * (100 - 10) + 10)
               op = Math.floor(Math.random()*2); // operator=연산자 사칙연산이어서 4개 랜덤
-            } else if(option == 2) {
+            } else if(option == 500) {
+              num1 = getRandomNumberArray(1)//parseInt(Math.random() * (1000 - 100) + 100)
+              num2 = getRandomNumberArray()//parseInt(Math.random() * (1000 - 100) + 100)
+              op = Math.floor(Math.random()*2); // operator=연산자 사칙연산이어서 4개 랜덤
+            }else if(option == 2) {
               //곱하기
               var num = Math.floor(Math.random() * 2);
               if(targetNum > 1) {
@@ -168,6 +175,16 @@ let gOption = 0;
       makeExp(2, parseInt(opt));      
     }
 
+    function getRandomNumberArray(opt) {
+      var num10 = parseInt(Math.random() * (100 - 10) + 10)
+      var num100 = parseInt(Math.random() * (1000 - 100) + 100)
+      
+      if(opt == 1)
+        return num100
+
+      return (_.shuffle([num10, num100]))[0]
+    }
+
 </script>
 </head>
 
@@ -203,6 +220,11 @@ let gOption = 0;
         <td>
           <button type="button" onclick="makeExp(400)" style="background-color: greenyellow;"> 두자리 덧셈+뺏셈 </button>
         </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <button type="button" onclick="makeExp(500)" style="background-color: yellow;"> 세(+두)자리 덧셈+뺄셈 </button>
+        </td>          
       </tr>
       <tr>
         <td colspan="4">
