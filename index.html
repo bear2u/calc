@@ -111,7 +111,28 @@ let gOption = 0;
                 if(num == 0) num1 = targetNum;
                 else num2 = targetNum;
               }
+            }else if(option == 3) {
+              //나낫셈
+              
+              // var num = Math.floor(Math.random() * 2);
+              if(targetNum > 0) {
+                var fNum = targetNum * num1;            
+                // num = fNum;
+                num1 = fNum;
+                num2 = targetNum;                
+              } else {
+                num1 = Math.floor(Math.random()*19)+1;
+
+                if(num1 < num2) {
+                  var tmp = num1;
+                  num1 = num2;
+                  num2 = tmp;
+                }
+              }
+              
             }
+
+
             let operator = "+"; // 변수 operator 초기화
             // console.log('op=', op)          
             switch(op)
@@ -119,6 +140,7 @@ let gOption = 0;
                 case 0: operator = "+"; break;
                 case 1: operator = "-"; break;
                 case 2: operator = "x"; break;
+                case 3: operator = "/"; break;
                 // case 3: operator = "/"; break;
             }
 
@@ -173,6 +195,11 @@ let gOption = 0;
     function calMultiply() {
       var opt = $("#mul_opt").find(":selected").val();
       makeExp(2, parseInt(opt));      
+    }
+
+    function calDiver() {
+      var opt = $("#mul_opt").find(":selected").val();
+      makeExp(3, parseInt(opt));      
     }
 
     function getRandomNumberArray(opt) {
@@ -245,6 +272,7 @@ let gOption = 0;
               </td>
               <td>
                 <button type="button" id="calMulti" onclick="calMultiply()" style="background-color: red;"> 곱셈시작 </button>
+                <button type="button" id="calMulti" onclick="calDiver()" style="background-color: greenyellow;"> 나눗셈시작 </button>
               </td>              
             </tr>
           </table>
